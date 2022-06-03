@@ -118,8 +118,12 @@ def vk_add_button(user_id,user_search):
                           {'user_id': event.user_id, 'message': f' {fio_name} {fio_last} добавлен/а в избранное',
                            'random_id': get_random_id(),
                            'keyboard': keyboard})
+                #записываем в бд информацию об изранном
 
             if response == 'показать избранное':
+                 
+                #достём из бд информацию об изранных и сохраняем в переменные, которые потом я подставлю в 'message': 'Ваше избранное:'
+                
                 vk.method('messages.send',
                           {'user_id': event.user_id, 'message': 'Ваше избранное:',
                            'random_id': get_random_id(),
