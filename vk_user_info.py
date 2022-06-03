@@ -9,7 +9,6 @@ class VkUser:
             'v': '5.131'
         }
     def user(self, user_id=None):
-        # Пол. Возможные значения: # 1 — женский; # 2 — мужской; # 0 — пол не указан.
         url_use = self.url_api_vk + 'users.get'
         params = {
             'user_ids': user_id,
@@ -21,12 +20,13 @@ class VkUser:
         rdata = req['response'][0]['bdate'].split('.')
         birth_date = date(int(rdata[2]), int(rdata[1]), int(rdata[0]))
         req_data = (date.today() - birth_date).days // 365.2425
-
+        
+        #записываю в бд (9930, 1, 33)
+        
         return req['response'][0]['city']['id'],req['response'][0]['sex'], int(req_data)
 
 
     def user_id_search(self, user_id=None):
-        # Пол. Возможные значения: # 1 — женский; # 2 — мужской; # 0 — пол не указан.
         url_use = self.url_api_vk + 'users.get'
         params = {
             'user_ids': user_id,
@@ -57,8 +57,7 @@ class VkUser:
             'sex': sex_new,
             'age_from': age_from,
             'age_to': age_to,
-            # Пол. Возможные значения: # 1 — женский; # 2 — мужской; # 0 — пол не указан.
-            'count': '10',
+            'count': '1000',
             'access_token': token,
             'fields': 'id,city,friend_status',
             'v': '5.131'
