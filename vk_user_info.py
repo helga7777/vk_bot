@@ -1,7 +1,9 @@
 import requests
 from datetime import date
 
-class VkUser:
+token = ''
+
+class VkUser:   
     url_api_vk = 'https://api.vk.com/method/'
     def __init__(self,token):
         self.params = {
@@ -97,5 +99,3 @@ class VkUser:
             foto3 = None
         list_photo = [{"type": "photo","photo": foto1}, {"type": "photo","photo": foto2}, {"type": "photo","photo": foto3}]
         return list_photo
-
-token = ''
