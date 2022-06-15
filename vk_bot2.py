@@ -72,6 +72,7 @@ def vk_add_button(user_id,user_search):
         keyboard.add_button('добавить в избранное', color=VkKeyboardColor.POSITIVE)
         keyboard.add_line()
         keyboard.add_button('показать избранное', color=VkKeyboardColor.POSITIVE)
+        keyboard.add_button('Отмена', color=VkKeyboardColor.POSITIVE)
         keyboard = keyboard.get_keyboard()
         return keyboard
 
@@ -117,6 +118,8 @@ def vk_add_button(user_id,user_search):
                     vk.method('messages.send',
                                 {'user_id': event.user_id, 'message': f'Ваше избранное:\n{count}. {fav[0]} {fav[1]}\n',
                                 'random_id': get_random_id(),
-                                'keyboard': keyboard})
-        k += 1
+                                'keyboard': keyboard})           
+            k += 1
+            if response == 'Отмена':
+                break
     print('--------------------------------------------')
